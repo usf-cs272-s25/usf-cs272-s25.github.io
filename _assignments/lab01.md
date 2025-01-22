@@ -24,9 +24,11 @@ published: true
 
 1. You may use the terminal-mode editor of your choice (e.g. micro, nano, vim, emacs)
 
-## Step 2: Set up `ssh` for local development
+## Step 2: Use github on USF's network
 
-1. Follow [these steps](https://cs221-03-f23.github.io/docs/ssh-local-setup.html) (shared with my CS 221 course)
+1. In order to use `github.com` you'll want to somehow store credentials on your laptop. Traditionally, we used [`ssh`](https://cs221-03-f23.github.io/docs/ssh-local-setup.html) to authenticate to github, where credentials are stored using `ssh-agent`. 
+1. However, USF has made it difficult to use `ssh` on the USF Connect Wi-Fi network. Therefore, I recommend switching to using `http` and [Git Credential Manager](https://github.com/git-ecosystem/git-credential-manager/blob/release/docs/install.md)
+1. I recommend that you clone repos using the http URL. Git will use the credential manager, and communicate over `https`, which is permitted on USF Connect.
 
 ## Step 3: Set up your Go toolchain
 
@@ -88,8 +90,7 @@ published: true
     /Users/phil/go/bin/dlv
     ```
 
-1. Optional: If you want to use an Integrated Development Environment (IDE), you may use [VS Code](https://code.visualstudio.com/). 
-    1. VS Code will offer to install extensions for `go` and `gopls`. You should accept both. 
+1. If you want to use an Integrated Development Environment (IDE), I recommend [VS Code](https://code.visualstudio.com/). VS Code will offer to install extensions for `go` and `gopls`. You should accept both. 
 
 1. Unsupported: There is a Go-specific IDE called [GoLand](https://www.jetbrains.com/go/) that you're welcome to try. I won't be supporting it.
 
