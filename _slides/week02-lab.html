@@ -1,0 +1,57 @@
+---
+title: Go Tools
+layout: raw
+---
+
+# Lab02 Topics
+
+---
+
+## HTML Parsing
+
+1. Review the [example code](https://pkg.go.dev/golang.org/x/net/html#Parse) to see how to call the HTML parser and traverse the resulting tree
+1. Review the struct definition for an [`html.Node`](https://pkg.go.dev/golang.org/x/net/html#Node) to see that `TextNode` types contain user-visible text in their `Data`.
+
+---
+
+## URL Cleaning
+
+1. Problem: URLs in markup can be absolute, e.g. http://www.example.com/index.html or partial (/index.html)
+1. Your web crawler will need a way to turn a partial URL into a an absolute URL
+1. URL parsing is complex but Go provides a [URL struct](https://pkg.go.dev/net/url#URL) and parser you can use.
+
+---
+# Test-Driven Development (TDD)
+
+---
+
+## Start with the tests
+1. What does correct behavior look like?
+1. How can we prevent regressions?
+1. Positive and negative test cases
+
+---
+
+## In the professional world
+1. All commits need to prove they don't break anything
+1. Bug fixes need to add a test case
+1. Automated test suites can/should grow very large
+
+---
+
+## Go has a testing mechanism
+1. `go test` invokes your test cases
+1. If you have a function `Foo()` in `foo.go`, you should have `TestFoo()` in `foo_test.go`
+1. Your test code will be executed by the `Testing` package, not by your `main()`
+
+---
+
+## In CS 272
+
+1. You will write test cases for  your code
+1. You will maintain the test cases as the project increases in complexity
+1. Write good test cases - assignments will include rubric for effective test cases
+
+--- 
+
+# Demo Code

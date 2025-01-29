@@ -46,7 +46,7 @@ collections:
 ordered-categories:
   - "Large Language Models"
   - "Databases"
-  - "Information Retrieval"
+  - "Web Crawler"
   - "Learning Go"
   - "Intro"
 
