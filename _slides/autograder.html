@@ -1,0 +1,104 @@
+---
+title: Autograder
+layout: raw
+---
+
+# Generic Autograder Setup
+
+---
+
+## Clone onto your machine
+
+```sh
+cd ~
+git clone https://github.com/phpeterson-usf/autograder
+git clone https://usf-cs272-s25/tests/
+```
+
+---
+
+## Add the script to your PATH (recent Macs)
+
+```sh
+cd ~
+nano .zshrc
+```
+
+Add this line
+
+```sh
+export PATH=~/autograder:$PATH
+```
+
+Save and quit
+
+```sh
+source .zshrc
+```
+
+---
+
+## Add the script to your PATH (Windows or older Macs)
+
+```sh
+cd ~
+nano .bashrc
+```
+
+Add this line (no spaces aroung the '=')
+
+```sh
+export PATH=~/autograder:$PATH
+```
+
+Save and quit your editor
+
+```sh
+source .bashrc
+```
+
+---
+
+## Testing
+
+```sh
+cd lab01-phpeterson-usf
+grade test
+
+---
+
+## Optional - test cases somewhere besides ~
+
+```sh
+cd ~/.config/grade
+nano config.toml
+```
+
+1. Look for `[Tests]`
+2. Uncomment `tests_path` by removing the '#'
+3. Change the `tests_path` to where you cloned tests, e.g. 
+
+    ```sh
+    tests_path = "~/cs272/tests"
+    ```
+
+4. The Unix shell is case sensitive
+
+---
+
+# Autograder with Go
+
+---
+
+## Why? We already have `go test`
+
+1. Autograder is instructor/TA automation. It runs over all student repos, calculates late penalty, uploads to Canvas, 
+1. I can assign rubric values to each test case
+
+---
+
+## How?
+
+1. Test case script calls `go test`, records result
+1. Git pull in the tests repo for every assignment
+1. Demo
