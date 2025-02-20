@@ -1,54 +1,35 @@
 ---
 layout: assignment
-due: 
-github_url: 
-published: false
+due: 2025-02-25 23:59:59 -0800
+github_url: https://classroom.github.com/a/eYNgQIuS
+published: true
 ---
+
+## Background
+
+1. For this lab, you will design a database schema using [SQLite](https://sqlite.org/index.html)
+1. In a subsequent project, we will adapt your search engine to use this schema 
+
+## Tools setup
+
+1. For this lab you will need to install the `sqlite3` command-line interpreter
+1. Check if you already have `sqlite3`  using `$ which sqlite3`. 
+1. If you don't have it you can install it in one of these ways:
+    1. MacOS users can use homebrew `% brew install sqlite`
+    1. Ubuntu users can use apt `$ sudo apt install sqlite`
+    1. From the [SQLite web site](https://sqlite.org/download.html)
+
 ## Requirements
-1. You will build a web crawler which incorporates the elements of the prior lab assignments, including their test cases: 
-    1. Download from a URL
-    1. Extract non-markup text using Go's `html.Parser`
-    1. Extract `href` attributes from `<a>` tags
-1. Lab03 adds the following new features, which must include new test cases
-    1. An in-memory inverted index based on Go's `map`
-    1. An HTTP server which can search an index
-    1. [Snowball stemmer](https://github.com/kljensen/snowball)
-1. Your solution will crawl the text of [Romeo and Juliet](/tests/rnj/), which I got from [Project Gutenberg](https://www.gutenberg.org/) and divided
-into an HTML document per scene.
-1. You will write a `TestSearch` function which tests these three cases for the inverted index, returning the term frequency for each one (i.e. the map of string to frequency)
-    1. Search `https://cs272-f24.github.io/tests/rnj/sceneI_30.0.html` for `Verona` should find one hit:
-        ```
-        "https://cs272-f24.github.io/tests/rnj/sceneI_30.0.html": 1
-        ```
-    1. Search `https://cs272-f24.github.io/tests/rnj/sceneI_30.1.html` for `Benvolio` should return 26 hits:
-        ```
-        "https://cs272-f24.github.io/tests/rnj/sceneI_30.1.html": 26
-        ```
-    1. Search `https://cs272-f24.github.io/tests/rnj/` for `Romeo` should return these hits:
-        ```
-        "https://cs272-f24.github.io/tests/rnj/sceneI_30.0.html":  2,
-        "https://cs272-f24.github.io/tests/rnj/sceneI_30.1.html":  22,
-        "https://cs272-f24.github.io/tests/rnj/sceneI_30.3.html":  2,
-        "https://cs272-f24.github.io/tests/rnj/sceneI_30.4.html":  17,
-        "https://cs272-f24.github.io/tests/rnj/sceneI_30.5.html":  15,
-        "https://cs272-f24.github.io/tests/rnj/sceneII_30.2.html": 42,
-        "https://cs272-f24.github.io/tests/rnj/":                  200,
-        "https://cs272-f24.github.io/tests/rnj/sceneI_30.2.html":  15,
-        "https://cs272-f24.github.io/tests/rnj/sceneII_30.0.html": 3,
-        "https://cs272-f24.github.io/tests/rnj/sceneII_30.1.html": 10,
-        "https://cs272-f24.github.io/tests/rnj/sceneII_30.3.html": 13,
-        ```
-1. You can use `reflect.DeepEqual()` to test the equivalence of your `got` map and your `want` map
 
-## Given
-
-In lecture meetings we will discuss and provide sample code for:
-1. Hash tables, the underlying technology for go `map`
-1. Inverted indexes, which can be used to facilitate searching a corpus of documents
-1. Word stemming
+1. Using the lecture discussion about relational modeling, develop a schema for your search engine data structures and represent it in two ways:
+1. Sketch an ER diagram on paper using your entities and cardinality
+1. Create tables using the `sqlite3` command-line interpreter and output the results using
+    ```text
+    sqlite> .output lab03.sql
+    sqlite> .dump
+    ```
+1. Please submit a photo of your sketch and lab03.sql to your assignment repo
 
 ## Rubric
-1. 100 pts: correctness as shown by the autograder workflow on github.com
-    1. 5 pts each for `TestExtract`, `TestCleanHref`, `TestDownload`, and `TestCrawl` continuing to pass
-    1. 80 pts for `TestSearch` passing
-1. NB: grading happens on the branch named `dev`
+
+1. 100 pts for credible effort
