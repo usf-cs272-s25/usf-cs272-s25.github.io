@@ -1,8 +1,8 @@
 ---
 layout: assignment
-due: 
-github_url: 
-published: false
+due: 2025-03-18 23:59:59 -0800
+github_url: https://classroom.github.com/a/9DRI87Xh
+published: true
 ---
 
 ## Requirements
@@ -15,8 +15,8 @@ published: false
 
 1. I crawled `http://localhost:8080/top10/Dracula%20%7C%20Project%20Gutenberg/index.html` and searched for "blood"
 1. The top hit is chap21.html
-1. Example `robots.txt` including `disallow: *chap21.html` is given [here](/tests/lab05/robots.txt)
-1. Search hits (minus chap21.html) and a sketch for `TestCrawlDelay()` are given [here](/tests/lab05/test-cases.go).
+1. Example `robots.txt` including `disallow: *chap21.html` is given [here](/test-data/lab05/robots.txt)
+1. Search hits (minus chap21.html) and a sketch for `TestCrawlDelay()` are given [here](/test-data/lab05/test-cases.go).
 
 ## Rubric
 
