@@ -1,8 +1,8 @@
 ---
 layout: assignment
-due: 
-github_url: 
-published: false
+due: 2025-03-25 23:59:59 -0800
+github_url: https://classroom.github.com/a/_3uMArUJ
+published: true
 ---
 
 ## Requirements
@@ -27,4 +27,3 @@ published: false
 
 1. 50 pts. TestTfIdf
 1. 50 pts. Code review for concurrency and clickable search results
-1. For code written by a Large Language Model, you will receive a zero.
