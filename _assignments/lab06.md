@@ -1,8 +1,8 @@
 ---
 layout: assignment
-due: 
-github_url: 
-published: false
+due: 2025-04-01 23:59:59 -0700
+github_url: https://classroom.github.com/a/gRw2W1M9
+published: true
 ---
 
 ## Background
@@ -24,17 +24,13 @@ ChromaDB is one of the popular vector databases, offering semantic similarity. T
 
 ### A Large Language Model (LLM)
 
-You can choose between [OpenAI](https://openai.com/) and [Ollama](https://ollama.com/)
+You can use the [OpenAI](https://openai.com/) APIs
 
 1. To use OpenAI's cloud API, you'll need an OpenAI Project Key
     1. Go to openai.com > Products > API, and sign in. I used Google and my USF credentials
     1. You'll need to set up a payment method. I originally put $20 into it, and have $19.69 remaining, so it's not expensive. The `GPT4oMini` model is good and inexpensive
     1. You'll need access to the project API key in your code, but you should not commit the key to github. A reasonable approach is a shell script and Go's `os.Getenv()`
     1. You can program OpenAI in Go using the [sashabaranov](https://github.com/sashabaranov/go-openai) package
-
-1. If you prefer, you can download one of the Meta/Facebook models to your laptop
-    1. Ollama provides a local web server on top of the Meta (aka Facebook) models such as Llama 3.2 without any cost or API key
-    1. If you choose this approach make sure you have [enough compute resources](https://llamaimodel.com/requirements-3-2/) 
 
 ## Given
 
@@ -55,4 +51,4 @@ The template repo contains
 
 ## Rubric
 
-1. TestVectorQuery - 100 pts. Will be graded manually as it takes too long for Github Actions
+1. TestVectorQuery - 100 pts. 
