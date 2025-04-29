@@ -2,7 +2,7 @@
 layout: assignment
 due: 2025-05-06 23:59:59 -0700
 github_url: https://classroom.github.com/a/Ox4JSVGT
-published: false
+published: true
 ---
 
 ## Background
