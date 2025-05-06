@@ -83,12 +83,46 @@ layout: raw
 # Security
 ---
 
-## Security
+## Out of Bounds (OOB)
 
-1. OOB (stack overflow)
-1. Supply chain attacks (SolarWinds)
-1. SQL injection
-1. Password storage
+1. If you know where a secret lives in memory <!-- .element: class="fragment" -->
+1. Find code which operates on adjacent memory <!-- .element: class="fragment" -->
+1. Look for an opportunity to read past the end of the buffer, capturing the secret <!-- .element: class="fragment" -->
+1. Stack Overflow <!-- .element: class="fragment" -->
+
+---
+
+## Remote Code Execution
+
+1. Load your malicious code into memory somehow <!-- .element: class="fragment" -->
+1. When functions return to their caller, the return address is on the stack <!-- .element: class="fragment" -->
+1. Look for code which manipulates that address and replace it with the address of your code <!-- .element: class="fragment" -->
+1. Log4J <!-- .element: class="fragment" -->
+
+---
+
+## Supply Chain Attacks
+
+1. Find/guess the password of a developer who has permission to push to a repo <!-- .element: class="fragment" -->
+1. Add a bunch of innocent-looking (or super obscure) code <!-- .element: class="fragment" -->
+1. Get the company's dev ops team to distribute your malware for you <!-- .element: class="fragment" -->
+1. Solar Winds <!-- .element: class="fragment" -->
+
+---
+
+## SQL injection
+
+1. If your system accepts input from a user, a malicious user could tailor the input to attack you <!-- .element: class="fragment" -->
+1. Enter name: Phil ;DROP TABLE users; <!-- .element: class="fragment" -->
+1. Never trust form data from users <!-- .element: class="fragment" -->
+
+---
+
+## Password Storage
+
+1. An attacker or disgruntled employee could get access to passwords <!-- .element: class="fragment" -->
+1. Don't store them in clear text, or using reversible encryption <!-- .element: class="fragment" -->
+1. Use a one-way hash algorithm to store passwords, e.g. PBKDF2 <!-- .element: class="fragment" -->
 
 ---
 # High Availability
@@ -108,6 +142,21 @@ layout: raw
 
 ---
 
+## Load Balancing
+
+1. Load Balancers face the public Internet and accept incoming HTTP requests <!-- .element: class="fragment" -->
+1. Requests may be forwarded to an application server in round-robin, or least-load <!-- .element: class="fragment" -->
+
+---
+
+## Reverse Proxies
+
+1. If a proxy server sits on a private network, caching web pages, a reverse proxy sits in a datacenter, caching database reads <!-- .element: class="fragment" -->
+1. LB and Proxy are sometimes combined <!-- .element: class="fragment" -->
+1. Redis is a common caching solution <!-- .element: class="fragment" -->
+
+---
+
 ## Database Performance
 
 With a sufficiently large database
@@ -115,15 +164,6 @@ With a sufficiently large database
 1. Database Sharding -  the key/index space must be distributed across many machines <!-- .element: class="fragment" -->
 1. Read Replicas - Read results can be cached to reduce load on databases <!-- .element: class="fragment" -->
 1. Consistency - DB writes need a careful policy. Update all read replicas [now|eventually|on read] <!-- .element: class="fragment" -->
-
----
-
-## App Server Performance
-
-1. Reverse Proxies
-1. Caching (requests)
-1. Autoscaling
-1. Load balancing
 
 ---
 # When Things Go Wrong
@@ -141,6 +181,7 @@ With a sufficiently large database
 
 1. Monitoring KPIs for dangerous thresholds has to wake someone up in the middle of the night <!-- .element: class="fragment" -->
 1. PEP - are customers seeing a problem? <!-- .element: class="fragment" -->
+1. Load Average is the average number of processes waiting to be scheduled <!-- .element: class="fragment" -->
 
 ---
 
