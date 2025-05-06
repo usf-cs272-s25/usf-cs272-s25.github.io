@@ -1,0 +1,167 @@
+---
+title: Production
+layout: raw
+---
+
+# Production Deployment
+
+---
+# Environments
+---
+
+## What Does Production Mean?
+
+1. Your production environment is what your customers actually use <!-- .element: class="fragment" -->
+1. We don't test new features or fixes in production <!-- .element: class="fragment" -->
+1. Typically we have several environments: one for development, one for testing and/or performance testing, a "staging" environment, and production <!-- .element: class="fragment" -->
+
+---
+
+## Development
+
+1. Developers use the development environment to work on new features or bug fixes <!-- .element: class="fragment" -->
+1. It's ok for things to be broken, but you have to converge as a release date approaches <!-- .element: class="fragment" -->
+
+---
+
+## Staging
+
+1. Staging contains your production-candidate code <!-- .element: class="fragment" -->
+1. Has passed code reviews and test cases <!-- .element: class="fragment" -->
+1. Managers who don't build the code want to sanity-check it <!-- .element: class="fragment" -->
+
+---
+
+## How Do We Make Environments?
+
+1. A common approach is "Infrastructure as Code" in which we write code to generate the environment from bare metal <!-- .element: class="fragment" -->
+1. A popular system is Terraform, in which a Domain-Specific Language is used to create an environment from bare metal <!-- .element: class="fragment" -->
+
+---
+# Release Methodologies
+---
+
+## Waterfall
+
+1. In "waterfall" planning, we write specs as completely as possible to describe the behavior end-users see, and how the code will accomplish that. <!-- .element: class="fragment" -->
+1. This is time-consuming, but when lives are at stake, it's worth it. <!-- .element: class="fragment" -->
+1. If lives aren't at stake, waterfall plans can become obsolete as requirements change. <!-- .element: class="fragment" -->
+
+---
+
+## Agile
+
+1. In "agile" development, we try for short-term wins because making a year-long plan won't work anyway <!-- .element: class="fragment" -->
+1. The team has a daily "standup" to communicate needs, blockers, heads-up <!-- .element: class="fragment" -->
+1. Release schedules are 2-3 week "sprints" which culminate in a deployment to production <!-- .element: class="fragment" -->
+
+---
+
+## Problems with Agile
+
+1. Commonly used "story points" are an imprecise way to estimate scope <!-- .element: class="fragment" -->
+1. It's hard to schedule work which takes longer than a sprint <!-- .element: class="fragment" -->
+1. It's hard to plan a project from scratch. Easier to improve a running system <!-- .element: class="fragment" -->
+
+---
+
+## Reality
+
+1. Organizations pick-and-choose from methodologies which fit their culture and project scope <!-- .element: class="fragment" -->
+1. Choose the right tool for the job <!-- .element: class="fragment" -->
+
+---
+
+## Project planning is hard
+
+1. Hofstadter's Law: Everything takes longer than you think, even after taking Hofstadter's Law into account <!-- .element: class="fragment" -->
+1. Fred Brooks: Adding manpower to a late software project makes it later <!-- .element: class="fragment" -->
+1. Iron Triangle: Good, fast, cheap. Choose two. <!-- .element: class="fragment" -->
+1. Conway's Law: Organizations which design systems are constrained to produce designs which are copies of the communication structures of these organizations <!-- .element: class="fragment" -->
+
+---
+# Security
+---
+
+## Security
+
+1. OOB (stack overflow)
+1. Supply chain attacks (SolarWinds)
+1. SQL injection
+1. Password storage
+
+---
+# High Availability
+---
+
+## Protocols
+
+1. HTTP is stateless - future operations can't depend on past operations <!-- .element: class="fragment" -->
+1. Idempotency - operations should have the same result no matter how many times they run, say after an error <!-- .element: class="fragment" -->
+
+---
+
+## Networks
+
+1. Redundancy - if one server/rack/datacenter goes offline fail over to an HA partner in another server/rack/datacenter <!-- .element: class="fragment" -->
+1. Georouting - DNS is used to route traffic to the DC closest to your IP address (e.g. Akamai) <!-- .element: class="fragment" -->
+
+---
+
+## Database Performance
+
+With a sufficiently large database
+
+1. Database Sharding -  the key/index space must be distributed across many machines <!-- .element: class="fragment" -->
+1. Read Replicas - Read results can be cached to reduce load on databases <!-- .element: class="fragment" -->
+1. Consistency - DB writes need a careful policy. Update all read replicas [now|eventually|on read] <!-- .element: class="fragment" -->
+
+---
+
+## App Server Performance
+
+1. Reverse Proxies
+1. Caching (requests)
+1. Autoscaling
+1. Load balancing
+
+---
+# When Things Go Wrong
+---
+
+## Debugging
+
+1. Containerized deployment <!-- .element: class="fragment" -->
+1. Log aggregators collect and graph KPIs: request rate, response latency, error rate <!-- .element: class="fragment" -->
+1. Splunk is a commonly used tool <!-- .element: class="fragment" -->
+
+---
+
+## Who Watches for Problems?
+
+1. Monitoring KPIs for dangerous thresholds has to wake someone up in the middle of the night <!-- .element: class="fragment" -->
+1. PEP - are customers seeing a problem? <!-- .element: class="fragment" -->
+
+---
+
+## Uptime Targets
+
+1. Uptime is usually measured in end-user minutes <!-- .element: class="fragment" -->
+1. Teams frequently make promises about how much uptime they will have: 99%, 99.9%, etc. <!-- .element: class="fragment" -->
+1. Five Nines (99.999%) is possible but expensive. Does the revenue stream justify that? <!-- .element: class="fragment" -->
+
+---
+
+## Service Level Agreements
+
+1. Teams make promises about how many minutes to respond to a problem, resolve the problem, and identify the root cause <!-- .element: class="fragment" -->
+1. Developers may need to be "on call" and available to diagnose problems <!-- .element: class="fragment" -->
+1. Pager Duty is a commonly used tool <!-- .element: class="fragment" -->
+
+---
+
+## Observations
+
+1. Things go wrong all the time <!-- .element: class="fragment" -->
+1. What matters is that you and you and your code get better over time <!-- .element: class="fragment" -->
+1. My motto: All New Mistakes! <!-- .element: class="fragment" -->
